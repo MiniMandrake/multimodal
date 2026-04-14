@@ -1,5 +1,6 @@
 {
   "name": "multimodal",
+  "homepage": "https://minimandrake.github.io/multimodal/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
