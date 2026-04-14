@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "",
+    "body": "Your lengthy text here...",
+    "style": "align-left",
+    "music": "src/audio/background.mp3",
+    "sfx": "src/audio/whoosh.mp3"
+  },
+  {
+    "id": 2,
+    "title": "Slide Two",
+    "body": "Do esse duis culpa culpa irure reprehenderit duis ut sit ad. Irure consectetur voluptate exercitation laboris nisi aliqua voluptate mollit aute dolor sit. Irure cupidatat elit nulla voluptate cillum dolore elit est laborum.",
+    "style": "align-center",
+    "music": "src/audio/background.mp3",
+    "sfx": "src/audio/whoosh.mp3"
+  },
+  {
+    "id": 3,
+    "title": "Slide 3",
+    "body": "Qui deserunt nisi esse duis est. Sunt cillum eiusmod ad voluptate nulla minim incididunt. Commodo minim ea adipisicing irure aliqua amet irure cillum laborum. Cupidatat consectetur minim officia enim et. Ipsum nisi do Lorem enim sunt amet nostrud fugiat do in. Ea velit non dolor laboris fugiat irure occaecat sit culpa consectetur occaecat qui id. Qui dolore cupidatat et adipisicing deserunt laboris velit consequat ea.",
+    "style": "align-right",
+    "music": "src/audio/background.mp3",
+    "sfx": "src/audio/whoosh.mp3"
+  }
+]
