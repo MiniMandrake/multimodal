@@ -12,33 +12,41 @@ const variants = {
 export default function Slider() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [muted, setMuted] = useState(false);
 
-  // music
   const musicRef = useRef(null);
   const sfxRef = useRef(null);
 
+  // Global music - starts once, never restarts
+  useEffect(() => {
+    const music = new Audio("/multimodal/audio/background.mp3");
+    music.loop = true;
+    music.volume = 0.5;
+    music.play().catch((err) => console.warn("Music blocked:", err));
+    musicRef.current = music;
+
+    return () => {
+      music.pause();
+    };
+  }, []);
+
+  // Sync mute to all audio
+  useEffect(() => {
+    if (musicRef.current) musicRef.current.muted = muted;
+    if (sfxRef.current) sfxRef.current.muted = muted;
+  }, [muted]);
+
+  // SFX per slide
   useEffect(() => {
     const slide = slides[index];
 
-    // Play SFX once on slide enter
     if (slide.sfx) {
-      sfxRef.current = new Audio(slide.sfx);
-      sfxRef.current.play();
+      const sfx = new Audio(slide.sfx);
+      sfx.muted = muted;
+      sfx.play().catch((err) => console.warn("SFX blocked:", err));
+      sfxRef.current = sfx;
     }
 
-    // Handle music - stop previous, start new
-    if (musicRef.current) {
-      musicRef.current.pause();
-      musicRef.current.currentTime = 0;
-    }
-
-    if (slide.music) {
-      musicRef.current = new Audio(slide.music);
-      musicRef.current.loop = true;
-      musicRef.current.play();
-    }
-
-    // Cleanup when slide changes
     return () => {
       if (sfxRef.current) {
         sfxRef.current.pause();
@@ -47,15 +55,13 @@ export default function Slider() {
     };
   }, [index]);
 
-  // cut music
+  // cut all audio on unmount
   useEffect(() => {
     return () => {
       if (musicRef.current) musicRef.current.pause();
       if (sfxRef.current) sfxRef.current.pause();
     };
   }, []);
-
-  // sliding
 
   const next = () => {
     setDirection(1);
@@ -87,6 +93,10 @@ export default function Slider() {
 
   return (
     <div className='slide-container'>
+      <button className='mute-button' onClick={() => setMuted((m) => !m)}>
+        {muted ? "🔇" : "🔊"}
+      </button>
+
       <AnimatePresence mode='wait' custom={direction}>
         <motion.div
           key={index}

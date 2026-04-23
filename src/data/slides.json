@@ -4,7 +4,7 @@
     "title": "",
     "body": "Your lengthy text here...",
     "style": "align-left",
-    "music": "/multimodal/audio/background.mp3",
+    "music": "",
     "sfx": "/multimodal/audio/whoosh.mp3"
   },
   {
@@ -12,7 +12,7 @@
     "title": "Slide Two",
     "body": "Do esse duis culpa culpa irure reprehenderit duis ut sit ad. Irure consectetur voluptate exercitation laboris nisi aliqua voluptate mollit aute dolor sit. Irure cupidatat elit nulla voluptate cillum dolore elit est laborum.",
     "style": "align-center",
-    "music": "/multimodal/audio/background.mp3",
+    "music": "",
     "sfx": "/multimodal/audio/whoosh.mp3"
   },
   {
