@@ -17,9 +17,8 @@ export default function Slider() {
   const musicRef = useRef(null);
   const sfxRef = useRef(null);
 
-  // Global music - starts once, never restarts
   useEffect(() => {
-    const music = new Audio("/multimodal/audio/background.mp3");
+    const music = new Audio("/multimodal/public/audio/background.mp3");
     music.loop = true;
     music.volume = 0.5;
     music.play().catch((err) => console.warn("Music blocked:", err));
