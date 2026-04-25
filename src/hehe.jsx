@@ -18,7 +18,7 @@ export default function Slider() {
   const sfxRef = useRef(null);
 
   useEffect(() => {
-    const music = new Audio(`${import.meta.env.BASE_URL}audio/background.mp3`);
+    const music = new Audio("/multimodal/audio/background.mp3");
     music.loop = true;
     music.volume = 0.5;
     music.play().catch((err) => console.warn("Music blocked:", err));
