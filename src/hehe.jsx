@@ -18,7 +18,7 @@ export default function Slider() {
   const sfxRef = useRef(null);
 
   useEffect(() => {
-    const music = new Audio("/multimodal/public/audio/background.mp3");
+    const music = new Audio("multimodal/audio/background.mp3");
     music.loop = true;
     music.volume = 0.5;
     music.play().catch((err) => console.warn("Music blocked:", err));
@@ -41,6 +41,7 @@ export default function Slider() {
 
     if (slide.sfx) {
       const sfx = new Audio(slide.sfx);
+      sfx.volume = slide.sfxVolume ?? 1;
       sfx.muted = muted;
       sfx.play().catch((err) => console.warn("SFX blocked:", err));
       sfxRef.current = sfx;
@@ -107,8 +108,26 @@ export default function Slider() {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={`slide ${slides[index].style}`}
         >
-          <h1>{slides[index].title}</h1>
-          <p>{slides[index].body}</p>
+          <h1>
+            {Array.isArray(slides[index].title)
+              ? slides[index].title.map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    <br />
+                  </span>
+                ))
+              : slides[index].title}
+          </h1>
+          <p>
+            {Array.isArray(slides[index].body)
+              ? slides[index].body.map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    <br />
+                  </span>
+                ))
+              : slides[index].body}
+          </p>
         </motion.div>
       </AnimatePresence>
     </div>
